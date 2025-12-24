@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Free Meet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="card">
+  <h1>🎥 Free Meet</h1>
+  <p>免費語音與視訊平台</p>
+  <button class="primary" onclick="createPrivate()">➕ 建立私人會議</button>
+  <button class="secondary" onclick="joinRandom()">🎲 加入隨機語音</button>
+  <small>Powered by Jitsi Meet</small>
+</div>
+<script>
+function randomRoom() {
+  return "room-" + Math.random().toString(36).substring(2,10);
+}
+function createPrivate() {
+  location.href = "room.html?room=" + randomRoom();
+}
+function joinRandom() {
+  location.href = "room.html?room=public-random";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Meeting</title>
+<script src="https://meet.jit.si/external_api.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="meeting">
+<div id="jitsi"></div>
+<script>
+const params = new URLSearchParams(location.search);
+const room = params.get("room") || "default-room";
+new JitsiMeetExternalAPI("meet.jit.si", {
+  roomName: room,
+  parentNode: document.getElementById("jitsi"),
+  interfaceConfigOverwrite: { SHOW_JITSI_WATERMARK: false }
+});
+</script>
+</body>
+</html>
