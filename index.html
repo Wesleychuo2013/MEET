@@ -9,19 +9,34 @@
 <div class="card">
   <h1>🎥 Free Meet</h1>
   <p>免費語音與視訊平台</p>
-  <button class="primary" onclick="createPrivate()">➕ 建立私人會議</button>
-  <button class="secondary" onclick="joinRandom()">🎲 加入隨機語音</button>
-  <small>Powered by Jitsi Meet</small>
+
+  <button class="primary" onclick="createRoom('private')">🔒 建立私人會議</button>
+  <button class="secondary" onclick="createRoom('public')">🌐 建立公開會議</button>
+  <button onclick="joinRandom()">🎲 隨機語音</button>
+  <button onclick="oneToOne()">👤 1 對 1 配對</button>
+
+  <small>Powered by Jitsi</small>
 </div>
+
 <script>
-function randomRoom() {
-  return "room-" + Math.random().toString(36).substring(2,10);
+function rand() {
+  return Math.random().toString(36).substring(2,10);
 }
-function createPrivate() {
-  location.href = "room.html?room=" + randomRoom();
+
+function createRoom(type){
+  const room = type + "-" + rand();
+  location.href = "room.html?room=" + room;
 }
-function joinRandom() {
+
+function joinRandom(){
   location.href = "room.html?room=public-random";
+}
+
+// 簡易 1v1（前端無後端版本）
+// 每分鐘一個配對房，最多 2 人
+function oneToOne(){
+  const minute = Math.floor(Date.now() / 60000);
+  location.href = "room.html?room=1v1-" + minute;
 }
 </script>
 </body>

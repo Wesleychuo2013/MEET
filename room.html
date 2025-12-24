@@ -8,13 +8,22 @@
 </head>
 <body class="meeting">
 <div id="jitsi"></div>
+
 <script>
 const params = new URLSearchParams(location.search);
 const room = params.get("room") || "default-room";
+
 new JitsiMeetExternalAPI("meet.jit.si", {
   roomName: room,
   parentNode: document.getElementById("jitsi"),
-  interfaceConfigOverwrite: { SHOW_JITSI_WATERMARK: false }
+  configOverwrite: {
+    enableLobby: false,
+    startWithAudioMuted: false,
+    startWithVideoMuted: false
+  },
+  interfaceConfigOverwrite: {
+    SHOW_JITSI_WATERMARK: false
+  }
 });
 </script>
 </body>
